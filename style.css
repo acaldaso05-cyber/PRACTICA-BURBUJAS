@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{   
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+#burbujas-container {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 9999;
+}
+
+.burbuja {
+    position: absolute;
+    /* Eliminamos bottom: 0 para que no se pinchen abajo */
+    background-color: rgba(0, 255, 247, 0.6); /* Un poco más de color */
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes explosion {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        /* Usaremos variables de JS para que cada una vaya a un lado distinto */
+        transform: translate(var(--dest-x), var(--dest-y)) scale(1.5);
+    }
+}
